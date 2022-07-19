@@ -6,9 +6,30 @@ body{
     background-color: lightgray;
 }  
 
+.img-bannerDetails{ 
+    
+clip-path: polygon(0 1%, 100% 0, 100% 70%, 0 45%);
+z-index: -5;
 
 
- 
+}
+
+.z-index{ 
+    z-index: 5;
+} 
+
+.flex-column{ 
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+    
+} 
+
+.relative{ 
+    position: relative;
+}
+
 .valoracion{  
 
         position: absolute;
@@ -16,6 +37,29 @@ body{
         z-index: 1;
    
 } 
+
+.miniPoster{ 
+    position: absolute;
+    left: 158px;
+    bottom: 80px;
+} 
+
+.playIcon{ 
+    position: absolute;
+    left: 1000px;
+    bottom: 175px;
+    z-index: 1;
+} 
+
+@media all and (max-width: 1200px){ 
+    .playIcon{ 
+        display: block;
+        left: 600px;
+        bottom: 30px;
+        z-index: 1;
+        max-width: 10%;
+    }
+}  
 
 @media all and (min-width: 1200px){ 
     .valoracion{ 
