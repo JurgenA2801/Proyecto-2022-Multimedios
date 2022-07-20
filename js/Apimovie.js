@@ -13,10 +13,92 @@ const form =  document.getElementById('form');
 const prev = document.getElementById('prev');
 const next = document.getElementById('next');
 const current = document.getElementById('current');
+const details = document.getElementById('detalles');
 
 const Nuevas = document.getElementById('Nuevas');
 const Cartelera = document.getElementById('Cartelera');
 const Populares = document.getElementById('Populares');
+const imageNotFound	= 'img/not_found.png'; 
+
+const genres = [
+  {
+    "id": 28,
+    "name": "Action"
+  },
+  {
+    "id": 12,
+    "name": "Adventure"
+  },
+  {
+    "id": 16,
+    "name": "Animation"
+  },
+  {
+    "id": 35,
+    "name": "Comedy"
+  },
+  {
+    "id": 80,
+    "name": "Crime"
+  },
+  {
+    "id": 99,
+    "name": "Documentary"
+  },
+  {
+    "id": 18,
+    "name": "Drama"
+  },
+  {
+    "id": 10751,
+    "name": "Family"
+  },
+  {
+    "id": 14,
+    "name": "Fantasy"
+  },
+  {
+    "id": 36,
+    "name": "History"
+  },
+  {
+    "id": 27,
+    "name": "Horror"
+  },
+  {
+    "id": 10402,
+    "name": "Music"
+  },
+  {
+    "id": 9648,
+    "name": "Mystery"
+  },
+  {
+    "id": 10749,
+    "name": "Romance"
+  },
+  {
+    "id": 878,
+    "name": "Science Fiction"
+  },
+  {
+    "id": 10770,
+    "name": "TV Movie"
+  },
+  {
+    "id": 53,
+    "name": "Thriller"
+  },
+  {
+    "id": 10752,
+    "name": "War"
+  },
+  {
+    "id": 37,
+    "name": "Western"
+  }
+]
+
 
 var currentPage = 1;
 var nextPage = 2;
@@ -63,85 +145,7 @@ function getMovies(url) {
        
         
         main.innerHTML = '';
-        const genres = [
-            {
-              "id": 28,
-              "name": "Action"
-            },
-            {
-              "id": 12,
-              "name": "Adventure"
-            },
-            {
-              "id": 16,
-              "name": "Animation"
-            },
-            {
-              "id": 35,
-              "name": "Comedy"
-            },
-            {
-              "id": 80,
-              "name": "Crime"
-            },
-            {
-              "id": 99,
-              "name": "Documentary"
-            },
-            {
-              "id": 18,
-              "name": "Drama"
-            },
-            {
-              "id": 10751,
-              "name": "Family"
-            },
-            {
-              "id": 14,
-              "name": "Fantasy"
-            },
-            {
-              "id": 36,
-              "name": "History"
-            },
-            {
-              "id": 27,
-              "name": "Horror"
-            },
-            {
-              "id": 10402,
-              "name": "Music"
-            },
-            {
-              "id": 9648,
-              "name": "Mystery"
-            },
-            {
-              "id": 10749,
-              "name": "Romance"
-            },
-            {
-              "id": 878,
-              "name": "Science Fiction"
-            },
-            {
-              "id": 10770,
-              "name": "TV Movie"
-            },
-            {
-              "id": 53,
-              "name": "Thriller"
-            },
-            {
-              "id": 10752,
-              "name": "War"
-            },
-            {
-              "id": 37,
-              "name": "Western"
-            }
-          ]
-          
+       
           
           const movies = [];
         data.forEach(movie => {
@@ -155,14 +159,19 @@ function getMovies(url) {
 						});
 						genresTag 			= genresTag.slice(0,-1);
             const description 	= (movie.overview.length>0)?movie.overview.split(' ').slice(0,12).join(' ').concat('...'):'Sin descripcion.';
+            const poster 	= (movie.poster_path!=null)?IMG_URL+movie.poster_path:imageNotFound;
+            const idmovie = movie.id;
+          
             
+           
+
             movieEl.innerHTML = `
            
 
             <div class="card mb-3 mt-4 shadow" style="max-width: 540px;">
                 <div class="row g-0">
                     <div class="col-md-4 text-center shadow-lg" id="contenedor"> 
-                        <img src="${movie.poster_path? IMG_URL+movie.poster_path: "http://via.placeholder.com/1080x1580"}" class="img-fluid rounded-start" alt="..."> 
+                        <img src="${poster}" class="img-fluid imgMovies rounded-start" alt="Sin imagen"> 
                     
                     </div> 
                     <div class="valoracion w-25"><span class="text-white bg-info rounded-circle fs-6 p-2">${movie.vote_average.toFixed(1)}</span></div>
@@ -171,8 +180,9 @@ function getMovies(url) {
                     <div class="card-body">
                     <h5 class="card-title">${movie.title}</h5>
                     <p class="card-text text-muted">${genresTag}</p>
-                    <p class="card-text"><small class="text-muted">${description}</small></p>                    
-                    </div>  
+                    <p class="card-text"><small class="text-muted">${description}</small></p>   
+                    <a class="" id="${idmovie}" onclick= "detalles(${movie.id})">Detalles</a>                 
+                    </div>   
                 
                     
                     <div class="text-end me-1 mb-2" >     
@@ -192,12 +202,20 @@ function getMovies(url) {
             </div> 
             `
            
+            
+            
+            
+            
+           
             movies.push(movieEl);
+
+            
+        
         })
         let rowlengs= movies.length/2;
         let indexmovies =0;
         for(let indexrow = 0; indexrow < rowlengs; indexrow++) {
-            //rowDiv.innerHTML = '';
+            
             
             const rowDiv = document.createElement('div');
             rowDiv.classList.add('row'); 
@@ -205,10 +223,12 @@ function getMovies(url) {
                 
                 
                 const element = movies[indexmovies];
-                
+               
                 if (indexmovies<movies.length) {
-                    indexmovies++;
+          
+                  
                     rowDiv.appendChild(element);
+                    indexmovies++;
                 }
                 
                 
@@ -274,6 +294,9 @@ function getMovies(url) {
   
   })
 
+
+
+
     prev.addEventListener('click', () => {
         if(prevPage > 0){
           pageCall(prevPage);
@@ -301,4 +324,74 @@ function getMovies(url) {
           let url = urlSplit[0] +'?'+ b
           getMovies(url);
         }
+      } 
+
+      function detalles (id){ 
+
+        console.log(id)
+        fetch(BASE_URL+'/movie/'+id+'?'+API_KEY).then(res => res.json()).then(data => {
+          
+          console.log(data);
+          showData(data);
+
+
+        }); 
+
+       
+    
+
+
+
+      }
+
+      function showData(data){ 
+        
+        const posterback = (data.backdrop_path!=null)?IMG_URL+data.backdrop_path:imageNotFound;
+        const poster = (data.poster_path!=null)?IMG_URL+data.poster_path:imageNotFound;
+       let genresTag 		= '';
+         for (let index = 0; index < data.genres.length; index++) {
+          genresTag += `${data.genres[index].name}, ` 
+          
+          
+         }
+       main.innerHTML = '';
+       const detalles = document.createElement('div');
+       detalles.innerHTML = `
+
+      <div class="overlap-box mb-3">
+         <div class="overlap-item" style="min-width:100%;">
+           <img src="${posterback}" class="img-bannerDetails img-fluid" alt="...">  
+         </div> 
+   
+          <div class="overlap-item mt-5">
+              <div class="container-sm d-flex justify-content-around margintop">
+               <div class="col-md-2 z-index container-sm d-flex"> 
+                   <img src="${poster}" class="img-fluid" alt="...">    
+               </div>                    
+                <div class="container-sm"></div>
+   
+                <a type="button" class="z-index">
+                   <svg xmlns="http://www.w3.org/2000/svg" width="150" height="100" fill="currentColor" class="bi bi-play-fill" viewBox="0 0 16 16">
+                       <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
+                   </svg>
+                </a>
+           </div>
+        </div>
+     </div> 
+       
+     
+     <div class="border border-secondary container-sm text-center mb-5 bg-white p-3">
+         <div class="mb-3 d-flex justify-content-center">
+           <h3 class="pe-3">${data.title}</h3> 
+           <p class="card-text"><span class="text-white bg-danger rounded-pill fs-5 p-2">${data.vote_average}</span></p>
+         </div>
+         <p class="card-text text-muted">${genresTag}</p>
+         <p class="card-text"><span class="text-white bg-warning rounded-pill fs-6 p-1"><small>${data.runtime} minutos</small></span></p>
+         <p>${data.overview}</p>
+     </div>     
+
+        `
+        main.appendChild(detalles);
+   
+
       }
