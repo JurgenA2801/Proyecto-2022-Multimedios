@@ -9,7 +9,7 @@
     <title>Document</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-md navbar-light bg-white"> 
+    <nav class="navbar navbar-expand-sm navbar-light bg-white"> 
         <div class="container-fluid">
               <button type="button" class="navbar-toggler"><span class="navbar-toggler-icon"></span></button> 
               <a href="#" class="nav-link dropdown-toggle text-info" role="button">Trending movies</a>
@@ -26,43 +26,93 @@
                 </svg>
               </a>                   
         </div>
-    </nav>
-    
-    
-    <div>
-        <div style="max-height: 530px;">
-            <img src="img/Banner_theBatman.jpeg" class="img-bannerDetails img-fluid" alt="..."> 
-        </div>
-         
-        <!-- <div class="d-flex justify-content-around">
-            <div class="col-md-2 z-index container-lg d-flex miniPoster"> 
-                <img src="img/The_Batman-449856406-large.jpg" class="img-fluid" alt="...">    
-            </div>     -->
-                
-            <div class="col-md-2 container-sm"></div> 
-    
-            <!-- <a type="button" class="playIcon">
-                
-                <svg xmlns="http://www.w3.org/2000/svg" width="150" height="100" fill="currentColor" class="bi bi-play-fill" viewBox="0 0 16 16">
-                    <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
-                </svg>
+    </nav> 
 
-            </a> -->
-        </div>
-    </div>  
+<nav class="navbar navbar-expand-sm absolute"> 
+    <div class="container-fluid">
+                                                                         
+        <a type="button" href="index.html" class="navbar-brand z-index  d-none d-md-none d-lg-block ">
+            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-caret-left" viewBox="0 0 16 16">
+                <path d="M10 12.796V3.204L4.519 8 10 12.796zm-.659.753-5.48-4.796a1 1 0 0 1 0-1.506l5.48-4.796A1 1 0 0 1 11 3.204v9.592a1 1 0 0 1-1.659.753z"/>
+            </svg>
+        </a>                   
+  </div>
+</nav>
+    
+    <div class="overlap-box mb-3">
+        <div style="max-height: 500px;" class="overlap-item">
+            <img src="img/Banner_theBatman.jpeg" class="img-bannerDetails img-fluid" alt="...">  
+        </div> 
 
+        <div class="overlap-item mt-5">
+            <div class="container-sm d-flex justify-content-around margintop">
+                <div class="col-md-2 z-index container-sm d-flex"> 
+                    <img src="img/The_Batman-449856406-large.jpg" class="img-fluid" alt="...">    
+                </div>                    
+               <div class="container-sm"></div>
+    
+                <a type="button" class="z-index">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="150" height="100" fill="currentColor" class="bi bi-play-fill" viewBox="0 0 16 16">
+                        <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
+                    </svg>
+                </a>
+            </div>
+         </div>
+
+      
+    </div> 
+        
+       
+       
+    
     <div class="border border-secondary container-sm text-center mb-5 bg-white p-3">
         <div class="mb-3 d-flex justify-content-center">
             <h3 class="pe-3">The Batman</h3> 
             <p class="card-text"><span class="text-white bg-danger rounded-pill fs-5 p-2">7,9</span></p>
         </div>
         <p class="card-text text-muted">Ciencia ficción, aventura</p>
-        <!-- <p class="card-text"><span class="text-white bg-warning rounded-pill fs-6 p-1"><small>180 min</small></span></p> -->
+        <p class="card-text"><span class="text-white bg-warning rounded-pill fs-6 p-1"><small>180 min</small></span></p>
         <p>En su segundo año luchando contra el crimen, 
         Batman explora la corrupción existente en la ciudad de Gotham y 
         el vínculo de esta con su propia familia. Además, entrará en conflicto con un asesino en serie conocido 
         como "el Acertijo".</p>
-    </div>
+    </div> 
+
+
+
+    <footer class="fixed-bottom d-block d-md-none d-lg-none">
+        <div>
+          <nav class="navbar bg-white">
+            <a class="nav-link text-info" aria-current="page" href="#">
+
+              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="25" fill="currentColor" class="bi bi-film" viewBox="0 0 16 16">
+                <path d="M0 1a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V1zm4 0v6h8V1H4zm8 8H4v6h8V9zM1 1v2h2V1H1zm2 3H1v2h2V4zM1 7v2h2V7H1zm2 3H1v2h2v-2zm-2 3v2h2v-2H1zM15 1h-2v2h2V1zm-2 3v2h2V4h-2zm2 3h-2v2h2V7zm-2 3v2h2v-2h-2zm2 3h-2v2h2v-2z"/>
+              </svg>
+
+            </a>
+            <a class="nav-link text-info" href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="25" fill="currentColor" class="bi bi-arrow-down-circle" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
+              </svg>
+            </a>
+            <a class="nav-link text-info" aria-current="page" href="#">
+
+              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="25" fill="currentColor" class="bi bi-stopwatch" viewBox="0 0 16 16">
+                <path d="M8.5 5.6a.5.5 0 1 0-1 0v2.9h-3a.5.5 0 0 0 0 1H8a.5.5 0 0 0 .5-.5V5.6z"/>
+                <path d="M6.5 1A.5.5 0 0 1 7 .5h2a.5.5 0 0 1 0 1v.57c1.36.196 2.594.78 3.584 1.64a.715.715 0 0 1 .012-.013l.354-.354-.354-.353a.5.5 0 0 1 .707-.708l1.414 1.415a.5.5 0 1 1-.707.707l-.353-.354-.354.354a.512.512 0 0 1-.013.012A7 7 0 1 1 7 2.071V1.5a.5.5 0 0 1-.5-.5zM8 3a6 6 0 1 0 .001 12A6 6 0 0 0 8 3z"/>
+              </svg>
+
+            </a>
+            <a class="nav-link text-info" aria-current="page" href="#">
+
+              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="25" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+              </svg>
+
+            </a>
+          </nav>
+        </div>
+     </footer>
 
     
         
