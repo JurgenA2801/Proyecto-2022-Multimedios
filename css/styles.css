@@ -101,6 +101,53 @@ body{
 .block{ 
     display: block;
 } 
+/*Codigo Aldahir*/
+
+.search{
+    background-color: transparent;
+    border: 2px solid var(color green);
+    padding:0.5rem 1rem;
+    border-radius: 50px;
+    font-size: 1rem;
+    color:#0dcaf0;
+    font-family: inherit;
+}
+
+.search:focus{
+    outline:0;
+    background-color: var(color green);
+}
+
+.search::placeholder{
+    color: #0dcaf0;
+}
+
+#tags{
+    width:80%;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 10px auto;
+}
+
+.tag{
+    color:white;
+    padding:10px 20px;
+    background-color: orange;
+    border-radius: 50px;
+    margin:5px;
+    display:inline-block;
+    cursor: pointer;
+}
+
+.tag.highlight{
+    background-color: red;
+}
+.no-results{
+    color:white;
+}
+
 
 
  

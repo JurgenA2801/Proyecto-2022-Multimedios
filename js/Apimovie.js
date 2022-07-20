@@ -5,7 +5,10 @@ const BASE_URL = 'https://api.themoviedb.org/3';
 const API_URL = BASE_URL + '/discover/movie?sort_by=popularity.desc&'+API_KEY;
 const IMG_URL = 'https://image.tmdb.org/t/p/w500';
 const searchURL = BASE_URL + '/search/movie?'+API_KEY;
+
 const main = document.getElementById('main');
+const search = document.getElementById('search');
+const form =  document.getElementById('form');
 
 const prev = document.getElementById('prev');
 const next = document.getElementById('next');
@@ -14,11 +17,13 @@ const current = document.getElementById('current');
 const Nuevas = document.getElementById('Nuevas');
 const Cartelera = document.getElementById('Cartelera');
 const Populares = document.getElementById('Populares');
+
 var currentPage = 1;
 var nextPage = 2;
 var prevPage = 3;
 var lastUrl = '';
 var totalPages = 100;
+
 getMovies(API_URL);
 
 function getMovies(url) {
@@ -52,6 +57,8 @@ function getMovies(url) {
         }
     })
     }
+
+
     function showMovies(data) {
        
         
@@ -135,6 +142,7 @@ function getMovies(url) {
             }
           ]
           
+          
           const movies = [];
         data.forEach(movie => {
             
@@ -149,6 +157,8 @@ function getMovies(url) {
             const description 	= (movie.overview.length>0)?movie.overview.split(' ').slice(0,12).join(' ').concat('...'):'Sin descripcion.';
             
             movieEl.innerHTML = `
+           
+
             <div class="card mb-3 mt-4 shadow" style="max-width: 540px;">
                 <div class="row g-0">
                     <div class="col-md-4 text-center shadow-lg" id="contenedor"> 
@@ -249,6 +259,20 @@ function getMovies(url) {
             }
         
     }
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+  
+      const searchTerm = search.value;
+      /*selectedGenre=[];*/
+      /*setGenre();*/
+      if(searchTerm) {
+          getMovies(searchURL+'&query='+searchTerm)
+      }else{
+          getMovies(API_URL);
+      }
+  
+  })
 
     prev.addEventListener('click', () => {
         if(prevPage > 0){
