@@ -19,6 +19,8 @@ const details = document.getElementById('detalles');
 const Nuevas = document.getElementById('Nuevas');
 const Cartelera = document.getElementById('Cartelera');
 const Populares = document.getElementById('Populares');
+const CarteleraMovil = document.getElementById('CarteleraMovil');
+const NuevasMovil = document.getElementById('NuevasMovil');
 const imageNotFound	= 'img/not_found.png'; 
 
 const genres = [
@@ -255,6 +257,18 @@ function getMovies(url) {
   Nuevas.addEventListener('click', () => {
         
     categorias("Nuevas");
+
+})  
+
+NuevasMovil.addEventListener('click', () => {
+        
+  categorias("Nuevas");
+
+}) 
+
+CarteleraMovil.addEventListener('click', () => {
+        
+  categorias("Cartelera");
 
 })
     function categorias(key) {
