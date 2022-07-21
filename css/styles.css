@@ -38,7 +38,9 @@ body{
    
 }    
 
-
+.side{ 
+    margin-bottom: 50px;
+}
 
 
 .flexC{ 
@@ -166,12 +168,26 @@ body{
     }
 }   
 
+.d-none{ 
+    display: none;
+} 
+
+.show{ 
+    display: block;
+}
 
 @media all and (max-width: 1200px){ 
     .margintop{ 
         margin-top: 0px;
     }
-}   
+}    
+
+
+@media all and (min-width: 768px){ 
+    .side{ 
+        margin-bottom: 0px;
+    }
+} 
 
 @media all and (max-width: 615px){ 
    .miniPoster{ 

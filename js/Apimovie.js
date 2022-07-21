@@ -21,6 +21,7 @@ const Cartelera = document.getElementById('Cartelera');
 const Populares = document.getElementById('Populares');
 const CarteleraMovil = document.getElementById('CarteleraMovil');
 const NuevasMovil = document.getElementById('NuevasMovil');
+let side = document.getElementById('side');
 const imageNotFound	= 'img/not_found.png'; 
 
 const genres = [
@@ -112,6 +113,8 @@ var totalPages = 100;
 getMovies(API_URL);
 
 function getMovies(url) {
+
+    side.classList.remove('d-none');
     lastUrl = url;
     fetch(url).then(res => res.json()).then(data => {
         console.log(data.results)
@@ -412,6 +415,7 @@ CarteleraMovil.addEventListener('click', () => {
      </div>     
 
         `
+        side.classList.toggle('d-none');
         detailsbox.appendChild(detalles);
         videoMovie(data.id)
 
