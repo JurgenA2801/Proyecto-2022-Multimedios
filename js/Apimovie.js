@@ -267,12 +267,12 @@ function getMovies(url) {
                     break;
                     case "Cartelera":
                         console.log("Cartelera")
-                         url = BASE_URL+"/trending/all/day?"+API_KEY
+                         url = BASE_URL+"/trending/movie/day?"+API_KEY
                         getMovies(url);
                         break;
                         case "Nuevas":
                             console.log("Nuevas")
-                             url = BASE_URL+"/trending/all/day?"+API_KEY
+                             url = BASE_URL+"/movie/now_playing?"+API_KEY
                             getMovies(url);
                             break;
                 default:
