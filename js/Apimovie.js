@@ -1,12 +1,13 @@
 //TMDB
 
-const API_KEY = 'api_key=5ee3e8edde556adc097693874e210f73';
+const API_KEY = 'api_key=5ee3e8edde556adc097693874e210f73&language=es-MX';
 const BASE_URL = 'https://api.themoviedb.org/3';
 const API_URL = BASE_URL + '/discover/movie?sort_by=popularity.desc&'+API_KEY;
 const IMG_URL = 'https://image.tmdb.org/t/p/w500';
 const searchURL = BASE_URL + '/search/movie?'+API_KEY;
 
 const main = document.getElementById('main');
+const detailsbox = document.getElementById('detailsbox');
 const search = document.getElementById('search');
 const form =  document.getElementById('form');
 
@@ -164,7 +165,7 @@ function getMovies(url) {
           
             
            
-
+            detailsbox.innerHTML='';
             movieEl.innerHTML = `
            
 
@@ -331,8 +332,11 @@ function getMovies(url) {
         console.log(id)
         fetch(BASE_URL+'/movie/'+id+'?'+API_KEY).then(res => res.json()).then(data => {
           
+          
           console.log(data);
+         
           showData(data);
+
 
 
         }); 
@@ -355,28 +359,31 @@ function getMovies(url) {
           
          }
        main.innerHTML = '';
+       detailsbox.innerHTML='';
        const detalles = document.createElement('div');
        detalles.innerHTML = `
 
-      <div class="overlap-box mb-3">
+      <div class="overlap-box">
          <div class="overlap-item" style="min-width:100%;">
            <img src="${posterback}" class="img-bannerDetails img-fluid" alt="...">  
          </div> 
    
-          <div class="overlap-item mt-5">
+          <div class="overlap-item ">
               <div class="container-sm d-flex justify-content-around margintop">
                <div class="col-md-2 z-index container-sm d-flex"> 
                    <img src="${poster}" class="img-fluid" alt="...">    
                </div>                    
                 <div class="container-sm"></div>
    
-                <a type="button" class="z-index">
+                <a type="button" id="play" href="" class="z-index">
                    <svg xmlns="http://www.w3.org/2000/svg" width="150" height="100" fill="currentColor" class="bi bi-play-fill" viewBox="0 0 16 16">
                        <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
                    </svg>
                 </a>
            </div>
-        </div>
+        </div> 
+
+        
      </div> 
        
      
@@ -391,7 +398,28 @@ function getMovies(url) {
      </div>     
 
         `
-        main.appendChild(detalles);
-   
+        detailsbox.appendChild(detalles);
+        videoMovie(data.id)
 
+      } 
+
+      
+ function videoMovie(id){ 
+
+  fetch(BASE_URL + '/movie/'+id+'/videos?'+API_KEY).then(res => res.json()).then(data => {
+    if(data.results[0] != null){
+      if(data.results[0].site == 'YouTube'){ 
+        $("#play").attr("href",`https://www.youtube.com/embed/${data.results[0].key}?autoplay=1` )      
+      console.log(data);
       }
+      
+    }     
+   
+   
+  
+
+  }); 
+
+
+ }
+     
